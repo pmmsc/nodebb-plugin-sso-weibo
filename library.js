@@ -124,9 +124,10 @@
         res.render('sso/weibo/admin', {});
     }
 
-    Weibo.init = function(app, middleware, controllers) {
-        app.get('/admin/weibo', middleware.admin.buildHeader, renderAdmin);
-        app.get('/api/admin/weibo', renderAdmin);
+    Weibo.init = function(data, callback) {
+        data.router.get('/admin/weibo', data.middleware.admin.buildHeader, renderAdmin);
+        data.router.get('/api/admin/weibo', renderAdmin);
+        callback();
     };
 
     module.exports = Weibo;
